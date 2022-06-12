@@ -1,0 +1,246 @@
+@charset "UTF-8";
+* {
+  /* - звездочка означает обращение ко всем тегам! */
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  /* - переращет ширины блока для удобства */
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+/* – убираем линии обводки у некоторых браузеров */
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  /* - запрещает самовольное изменение шрифта */
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+/*  – будет тот шрифт который устанавливаем в “body” */
+input::-ms-clear {
+  display: none;
+}
+
+/* – убираем крестик в form в браузере от MS */
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+/* – убирает элементы списка */
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: 400;
+  margin: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: burlywood;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: minmax(100px, auto) 1fr minmax(70px, auto);
+  -ms-grid-columns: 1fr;
+      grid-template: minmax(100px, auto) 1fr minmax(70px, auto)/1fr;
+      grid-template-areas: "header" "main" "footer";
+}
+
+header {
+  background-color: brown;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: header;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr;
+  -ms-grid-columns: 1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
+      grid-template: 1fr/1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .logo {
+  display: -ms-grid;
+  display: grid;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: aliceblue;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+}
+
+header nav {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3 / 4;
+}
+
+header nav ul {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+  justify-items: end;
+}
+
+header nav ul li {
+  margin: 0 20px 0 0;
+}
+
+header nav ul li a {
+  color: aliceblue;
+  font-weight: 14px;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 20px 0;
+  font-size: 30px;
+}
+
+main {
+  padding: 30px 15px;
+  margin-bottom: 30px;
+}
+
+@media (min-width: 900px) {
+  main {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    grid-area: main;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
+        grid-template: 1fr/1fr minmax(auto, 300px) minmax(auto, 1100px) 1fr;
+  }
+}
+
+main aside {
+  position: relative;
+  background-color: aquamarine;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+}
+
+@media (min-width: 900px) {
+  main aside ul {
+    position: fixed;
+    display: block;
+  }
+}
+
+main aside ul a {
+  text-decoration: underline;
+  display: block;
+  color: #fff;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 20px 30px;
+}
+
+main .contents {
+  padding: 30px 20px 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
+}
+
+main .contents h1 {
+  font-size: 40px;
+}
+
+main .contents .galegi {
+  margin: 30px 0 0;
+}
+
+main .contents .galegi__img {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 10px;
+}
+
+main .contents .galegi__img div {
+  position: relative;
+  padding: 0 0 85% 0;
+}
+
+@media (min-width: 600px) {
+  main .contents .galegi__img div:first-child, main .contents .galegi__img div:nth-child(8) {
+    -ms-grid-row: span 2;
+        grid-row-start: span 2;
+    -ms-grid-column: span 2;
+        grid-column-start: span 2;
+  }
+}
+
+main .contents .galegi__img div img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
